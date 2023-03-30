@@ -16,6 +16,7 @@ function TabWeatherPeriod() {
       activeKey={key}
       onSelect={(k) => setKey(k)}
       className="mb-3"
+      justify
     >
       <Tab eventKey="today" title="Сегодня">
         <WeatherToday />
@@ -26,6 +27,7 @@ function TabWeatherPeriod() {
       <Tab eventKey="week" title="Неделя">
         <WeatherWeek />
       </Tab>
+     
     </Tabs>
   );
 }
