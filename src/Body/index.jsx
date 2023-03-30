@@ -2,7 +2,8 @@ import { useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import Data from './Data';
+import TabWeatherPeriod from './TabWeatherPeriod';
+// import Data from './Data';
 import SideBar from './SideBar';
 import './Body.scss';
 
@@ -21,7 +22,8 @@ function Body() {
     </div>
     <Row>
        <Col md={4}>
-        <Data />
+        <TabWeatherPeriod />
+        {/* <Data /> */}
        </Col>
        <Col md={8}>
         <div className="map-example"></div>
