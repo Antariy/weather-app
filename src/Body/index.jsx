@@ -2,8 +2,7 @@ import { useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import TabWeatherPeriod from './TabWeatherPeriod';
-// import Data from './Data';
+import WeatherPeriods from './WeatherPeriods';
 import SideBar from './SideBar';
 import './Body.scss';
 
@@ -22,7 +21,7 @@ function Body() {
     </div>
     <Row>
        <Col md={4}>
-        <TabWeatherPeriod />
+        <WeatherPeriods />
         {/* <Data /> */}
        </Col>
        <Col md={8}>
