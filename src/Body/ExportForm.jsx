@@ -16,7 +16,7 @@ function ExportForm() {
       },          
     ];
 
-   const handleSubmit = (event) => {
+   const handleSubmit = () => {
        window.open();}
 
  return (        
