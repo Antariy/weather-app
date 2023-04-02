@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 function ExportForm() {
-  const [selectedFormat, choseSelectedFormat] = useState('');
-
+ 
     const formatValues = [
       {
         label: 'xml',
@@ -17,24 +16,19 @@ function ExportForm() {
       },          
     ];
 
+  const ExportClick= () => {
+        window.open();
+  };
 
-  function ExportClick() {
-
-    if (selectedFormat === 'xml') {
-      window.open()
-    } else if (selectedFormat === 'html') {
-      window.open();
-    } else if (selectedFormat === 'json') {
-      window.open();
-    }
-  }
+  const handleSubmit = (event) => {
+      event.preventDefault();}
 
  return (        
          
-      <>
+    <Form onSubmit={handleSubmit}>
     <Form.Group className="mb-3">
     <Form.Label>What type of data do you want to export? </Form.Label>
-    <Form.Select aria-label="Chose format" name='format' onChange={(e) => choseSelectedFormat(e.target.value)}>
+    <Form.Select aria-label="Chose format" name='format' onChange={handleSubmit}>
        {formatValues.map(({label}) => (<option value={label} key={label}>{label}</option>))}
     </Form.Select>
    </Form.Group>
@@ -43,12 +37,8 @@ function ExportForm() {
           Export
         </Button>
       </div>
-      </>
-
- 
-);
-
+    </Form>  
+  );
   }
-
 
 export default ExportForm;
