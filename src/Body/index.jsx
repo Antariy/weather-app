@@ -22,8 +22,7 @@ function Body() {
     <Row>
        <Col md={4}>
         <WeatherPeriods />
-        {/* <Data /> */}
-       </Col>
+        </Col>
        <Col md={8}>
         <div className="map-example"></div>
        </Col>
