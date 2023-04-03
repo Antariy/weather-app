@@ -1,40 +1,34 @@
-import React from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 function ExportForm() {
- 
-    const formatValues = [
-      {
-        label: 'xml',
-      },
-      {
-        label: 'html',
-      },
-      {
-        label: 'json',
-      },          
-    ];
+  const modes = ["xml", "html", "json"];
 
-   const handleSubmit = () => {
-       window.open();}
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    window.open();
+  };
 
- return (        
-         
+  return (
     <Form onSubmit={handleSubmit}>
-    <Form.Group className="mb-3">
-    <Form.Label>What type of data do you want to export? </Form.Label>
-    <Form.Select aria-label="Chose format" name='format'>
-       {formatValues.map(({label}) => (<option value={label} key={label}>{label}</option>))}
-    </Form.Select>
-   </Form.Group>
-        <div className="d-grid gap-2">
-        <Button variant="primary" type="submit" onChange={handleSubmit}>
+      <Form.Group className="mb-3">
+        <Form.Label>Mode</Form.Label>
+        <Form.Select name="mode">
+          {modes.map((mode) => (
+            <option value={mode} key={mode}>
+              {mode}
+            </option>
+          ))}
+        </Form.Select>
+      </Form.Group>
+
+      <div className="d-grid">
+        <Button variant="warning" type="submit">
           Export
         </Button>
       </div>
-    </Form>  
+    </Form>
   );
-  }
+}
 
 export default ExportForm;
