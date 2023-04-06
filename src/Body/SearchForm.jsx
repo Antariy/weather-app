@@ -8,7 +8,7 @@ function SearchForm() {
   const modes = ["xml", "html", "json"];
   const units = ["standard", "metric", "imperial"];
 
-  const langauges = [
+  const languages = [
     {
       label: "English",
       code: "en",
@@ -65,7 +65,6 @@ function SearchForm() {
             {modes.map((mode) => (
               <Form.Check
                 type="radio"
-                // id={`default-${mode}`}
                 label={mode}
                 key={mode} name='mode'
                 value={mode}
@@ -98,9 +97,8 @@ function SearchForm() {
 <Form.Group className="mb-3">
     <Form.Label>Languages</Form.Label>
     <Form.Select aria-label="Default select example" name='language'>
-{langauges.map(({code, label}) => (<option value={code} key={code} >{label}</option>))}
+{languages.map(({code, label}) => (<option value={code} key={code} >{label}</option>))}
     </Form.Select>
-   
 </Form.Group>
 
       <div className="d-grid gap-2">

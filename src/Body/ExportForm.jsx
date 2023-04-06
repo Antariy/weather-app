@@ -1,14 +1,22 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { getExportForm } from "../services/apiService";
+
 
 function ExportForm() {
   const modes = ["xml", "html", "json"];
 
-  const handleSubmit = (event) => {
+  const handleSubmit =  (event) => {
     event.preventDefault();
-    window.open();
-  };
 
+    const params = {
+      mode:event.target.mode.value,
+     }
+
+    const currentWeatherExport = getExportForm(params);
+    window.open(currentWeatherExport);
+    };
+ 
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">

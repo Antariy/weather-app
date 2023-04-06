@@ -20,3 +20,15 @@ export const getCurrentWeather = async (params) => {
     return await response.json();
 };
 
+
+export const getExportForm = (params) => {
+const searchExport = new URLSearchParams({
+        appid: apiKey,
+        ...defaultParams,
+        ...params,
+});
+   return `${apiUrl}/weather?${searchExport}`
+};
+
+
+

@@ -9,7 +9,7 @@ import { getCurrentWeather } from '../services/apiService';
 
 
 function Body() {
-
+  
     const [showSideBar, setShowSideBar] = useState(false);
     const [currentWeather, setCurrentWeather] = useState(null);
 
@@ -41,5 +41,6 @@ function Body() {
     </>
     );
 }
+
 
 export default Body;
