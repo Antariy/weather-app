@@ -7,28 +7,27 @@ export const defaultParams = {
     lon: 24.7536,
     mode: 'json',
     units: 'standard',
-  }
+}
 
-
-export const getCurrentWeather = async (params) => {
+export const generateFetchUrl = (params) => {
     const searchParams = new URLSearchParams({
-        appid: apiKey,
-        ...(params || defaultParams),
-    });
-    const response = await fetch(`${apiUrl}/weather?${searchParams}`);
-
-    return await response.json();
-};
-
-
-export const getExportForm = (params) => {
-const searchExport = new URLSearchParams({
         appid: apiKey,
         ...defaultParams,
         ...params,
-});
-   return `${apiUrl}/weather?${searchExport}`
+    });
+    return `${apiUrl}/weather?${searchParams}`;
 };
+
+
+export const getCurrentWeather = async (params) => {
+  
+    const url = await fetch(generateFetchUrl(params));
+
+    return await url.json();
+};
+
+
+
 
 
 
