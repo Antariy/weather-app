@@ -2,9 +2,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { getCurrentWeather, defaultParams } from "../services/apiService";
+import {
+  getCurrentWeather,
+  defaultParams,
+  getForcastWeather,
+} from "../services/apiService";
 
-function SearchForm() {
+function SearchForm({ setCurrentWeather, setForecastWeather, closeSideBar, selectedData, setSelectedData }) {
+ 
   const modes = ["xml", "html", "json"];
   const units = ["standard", "metric", "imperial"];
 
@@ -27,34 +32,49 @@ function SearchForm() {
     },
   ];
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-
     const params = {
-        lat:event.target.latitude.value,
-        lon:event.target.longitude.value,
-        mode:event.target.mode.value,
-        units:event.target.unit.value ,
-        lang:event.target.language.value,
-    }
+      lat: event.target.latitude.value,
+      lon: event.target.longitude.value,
+      mode: event.target.mode.value,
+      units: event.target.unit.value,
+      lang: event.target.language.value,
+    };
 
-   const currentWeather = await getCurrentWeather(params);
-   console.log('currentWeather', currentWeather);
-  }
+    setSelectedData(params);
 
+    const currentWeather = await getCurrentWeather(params);
+    const forecastWeather = await getForcastWeather(params);
+
+    setCurrentWeather(currentWeather);
+    setForecastWeather(forecastWeather);
+
+    closeSideBar();
+  };
+const defaultValue = selectedData || defaultParams;
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
         <Form.Label>Latitude</Form.Label>
-        <Form.Control type="text" placeholder="Latitude" name='latitude' defaultValue={defaultParams.lat} />
+        <Form.Control
+          type="text"
+          placeholder="Latitude"
+          name="latitude"
+          defaultValue={defaultValue.lat}
+        />
         <Form.Text className="text-muted">Example: 59.4370</Form.Text>
       </Form.Group>
 
       <Form.Group className="mb-3">
         <Form.Label>Longitude</Form.Label>
-        <Form.Control type="text" placeholder="Longitude" name='longitude'defaultValue={defaultParams.lon} />
+        <Form.Control
+          type="text"
+          placeholder="Longitude"
+          name="longitude"
+          defaultValue={defaultValue.lon}
+        />
         <Form.Text className="text-muted">Example: 24.7536</Form.Text>
       </Form.Group>
 
@@ -66,9 +86,10 @@ function SearchForm() {
               <Form.Check
                 type="radio"
                 label={mode}
-                key={mode} name='mode'
+                key={mode}
+                name="mode"
                 value={mode}
-                defaultChecked={mode === defaultParams.mode}
+                defaultChecked={mode === defaultValue.mode}
                 disabled
               />
             ))}
@@ -84,9 +105,9 @@ function SearchForm() {
                 type="radio"
                 label={unit}
                 key={unit}
-                name = 'unit'
-                value = {unit}
-                defaultChecked={unit === defaultParams.units}
+                name="unit"
+                value={unit}
+                defaultChecked={unit === defaultValue.units}
               />
             ))}
             <Form.Text className="text-muted">Measurement type</Form.Text>
@@ -94,16 +115,20 @@ function SearchForm() {
         </Col>
       </Row>
 
-<Form.Group className="mb-3">
-    <Form.Label>Languages</Form.Label>
-    <Form.Select aria-label="Default select example" name='language'>
-{languages.map(({code, label}) => (<option value={code} key={code} >{label}</option>))}
-    </Form.Select>
-</Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>Languages</Form.Label>
+        <Form.Select  name="language" defaultValue={defaultValue.lang}>
+          {languages.map(({ code, label }) => (
+            <option value={code} key={code}>
+              {label}
+            </option>
+          ))}
+        </Form.Select>
+      </Form.Group>
 
       <div className="d-grid gap-2">
         <Button variant="primary" type="submit">
-          Submit
+          Search
         </Button>
       </div>
     </Form>
