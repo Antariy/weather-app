@@ -7,6 +7,7 @@ import SideBar from "./SideBar";
 import "./Body.scss";
 import { getCurrentWeather, getForcastWeather } from "../services/apiService";
 import ErrorModal from "../ErrorModal";
+import Map from "./Map";
 
 function Body() {
   const [showSideBar, setShowSideBar] = useState(false);
@@ -42,7 +43,7 @@ function Body() {
           />
         </Col>
         <Col md={8}>
-          <div className="map-example"></div>
+          <Map {...currentWeather}/>
         </Col>
       </Row>
       <SideBar
