@@ -21,9 +21,14 @@ export const generateFetchUrl = (params, endPoint = 'weather') => {
 
 export const getCurrentWeather = async (params) => {
 
-    const url = await fetch(generateFetchUrl(params));
+    const response = await fetch(generateFetchUrl(params));
 
-    return await url.json();
+    if (!response.ok) {
+        const errorMessage = `Current weather Error ${response.status}: ${response.statusText}`
+        throw errorMessage;
+    }
+
+    return await response.json();
 };
 
 export const getForcastWeather = async (params) => {
@@ -31,8 +36,12 @@ export const getForcastWeather = async (params) => {
 
     const response = await fetch(url);
 
-    return await response.json();
+    if (!response.ok) {
+        const errorMessage = `Forecast weather Error ${response.status}: ${response.statusText}`
+        throw errorMessage;
+    }
 
+    return await response.json();
 };
 
 
