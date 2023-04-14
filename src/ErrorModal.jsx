@@ -1,13 +1,13 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function ErrorModal({ showErrorModal, setShowErrorModal }) {
+function ErrorModal({ show, handleClose }) {
   
-  const handleCloseErrorModal = () => setShowErrorModal(false);
+  // const handleCloseErrorModal = () => setShowErrorModal(false);
   
   return (
     <>
-        <Modal show={showErrorModal} onHide={handleCloseErrorModal}>
+        <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
@@ -16,10 +16,10 @@ function ErrorModal({ showErrorModal, setShowErrorModal }) {
         I like to move it, move it
         Ya like to move it! </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseErrorModal}>
+          <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleCloseErrorModal}>
+          <Button variant="primary" onClick={handleClose}>
             Save Changes
           </Button>
         </Modal.Footer>

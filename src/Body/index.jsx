@@ -6,7 +6,7 @@ import WeatherPeriods from "./WeatherPeriods";
 import SideBar from "./SideBar";
 import "./Body.scss";
 import { getCurrentWeather, getForcastWeather } from "../services/apiService";
-import ErrorModal from "./ErrorModal";
+import ErrorModal from "../ErrorModal";
 
 function Body() {
   const [showSideBar, setShowSideBar] = useState(false);
@@ -15,7 +15,7 @@ function Body() {
   const [showErrorModal, setShowErrorModal] = useState(false);
 
   const handleShow = () => setShowSideBar(true);
-  const handleShowErrorModal = () => setShowErrorModal(true);
+ 
 
   useEffect(() => {
     getCurrentWeather().then((weather) => {
@@ -34,8 +34,8 @@ function Body() {
           Search
         </Button>
         &nbsp;
-        <Button variant="primary" onClick={handleShowErrorModal}>
-          Error Modal
+        <Button variant="primary" onClick={() => setShowErrorModal(true)}>
+          Show Error Modal
         </Button>
       </div>
       <Row>
@@ -56,8 +56,8 @@ function Body() {
         setForecastWeather={setForecastWeather}
       />
       <ErrorModal
-        showErrorModal={showErrorModal}
-        setShowErrorModal={setShowErrorModal}
+        show={showErrorModal}
+        handleClose={() => setShowErrorModal(false)}
       />
     </>
   );
