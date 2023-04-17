@@ -8,6 +8,8 @@ function WeatherPeriods({
   forecastWeather,
   defaultTab,
   setSelectedTab,
+  setForecastDateTimeSelect,
+  forecastDateTimeSelect,
 }) {
   return (
     <Tabs
@@ -21,7 +23,8 @@ function WeatherPeriods({
       </Tab>
 
       <Tab eventKey="forcast" title="Forecast">
-        <ForecastSelect {...forecastWeather} />
+        <ForecastSelect {...forecastWeather}  setForecastDateTimeSelect = {setForecastDateTimeSelect}/>
+        <Data {...forecastDateTimeSelect} {...forecastWeather?.city}/>
       </Tab>
     </Tabs>
   );

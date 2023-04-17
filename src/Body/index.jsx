@@ -10,13 +10,14 @@ import ErrorModal from "../ErrorModal";
 import Map from "./Map";
 
 function Body() {
-  const defaultTab = 'current';
+  const defaultTab = "current";
 
   const [showSideBar, setShowSideBar] = useState(false);
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecastWeather, setForecastWeather] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [selectedTab, setSelectedTab] = useState(defaultTab);
+  const [forecastDateTimeSelect, setForecastDateTimeSelect] = useState(null);
 
   const handleShow = () => setShowSideBar(true);
 
@@ -34,11 +35,14 @@ function Body() {
       .catch((errorMessage) => setErrorMessage(errorMessage));
   }, []);
 
-    const mapProps = selectedTab === defaultTab ? currentWeather : {
-      main: forecastWeather?.list[0].main,
-      coord: forecastWeather?.city.coord,
-    };
-    
+  const mapProps =
+    selectedTab === defaultTab
+      ? currentWeather
+      : {
+          main: forecastDateTimeSelect?.main || forecastWeather?.list[0].main,
+          coord: forecastWeather?.city.coord,
+        };
+
   return (
     <>
       <div className="my-3">
@@ -51,14 +55,14 @@ function Body() {
           <WeatherPeriods
             currentWeather={currentWeather}
             forecastWeather={forecastWeather}
-            setSelectedTab = {setSelectedTab}
-            defaultTab = {defaultTab}
+            setSelectedTab={setSelectedTab}
+            defaultTab={defaultTab}
+            setForecastDateTimeSelect={setForecastDateTimeSelect}
+            forecastDateTimeSelect={forecastDateTimeSelect}
           />
         </Col>
         <Col md={8}>
-          <Map
-            {...mapProps}
-         />
+          <Map {...mapProps} />
         </Col>
       </Row>
       <SideBar
