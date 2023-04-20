@@ -1,7 +1,7 @@
 function Footer() {
     return (
-        <div className="text-center">
-@ 2023 Weather App
+        <div className="footer">
+            <p className="footerText">@ 2023 Weather App</p>
         </div>
     )
 }

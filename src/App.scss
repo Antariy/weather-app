@@ -1,2 +1,21 @@
 @import "~bootstrap/scss/bootstrap";
 
+.mapWindow {
+   text-align: center;
+}
+
+.footer {
+   display: flex;
+   justify-content: center;
+   background-color: rgba(253, 253, 3, 0.776);
+   height: 34px;
+   width: 100%;
+   border: solid rgba(253, 253, 3, 0.776);
+   border-radius: 15px;
+   margin-top: 20px
+}
+
+.footerText {
+   position: fixed;
+   bottom: 0;
+}

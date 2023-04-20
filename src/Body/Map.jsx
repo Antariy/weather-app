@@ -7,7 +7,7 @@ const containerStyle = {
 };
 
 
-function Map({ coord, main }) {
+function Map({ coord, main, weather }) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -15,24 +15,27 @@ function Map({ coord, main }) {
 
 
   return isLoaded && coord ? (
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={{
-            lat: coord.lat,
-            lng: coord.lon
-        }}
-        zoom={10}
-       >
-       <>
-       <InfoWindow position={{
-            lat: coord.lat,
-            lng: coord.lon,
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={{
+        lat: coord.lat,
+        lng: coord.lon
+      }}
+      zoom={10}
+    >
+      <>
+        <InfoWindow position={{
+          lat: coord.lat,
+          lng: coord.lon,
         }}
         >
-         <>{main?.temp}</>
+          <div className='mapWindow'>
+            <h5>{main?.temp}</h5>
+            <p>{weather[0]?.description}</p>
+          </div>
         </InfoWindow>
-        </>
-      </GoogleMap>
+      </>
+      </GoogleMap >
   ) : <></>
 }
 

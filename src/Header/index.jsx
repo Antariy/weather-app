@@ -2,20 +2,21 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Logo from '../Header/weather.png'
 
 function Header () {
     return (
-    <Navbar bg="light" variant="light" expand="sm">
+    <Navbar bg="primary" variant="dark" expand="sm">
       <Container>
         <Navbar.Brand href="#home">
         <img
               alt=""
-              src="https://react-bootstrap.netlify.app/logo.svg"
-              width="30"
-              height="30"
+              src={Logo}
+              width="50"
+              height="50"
               className="d-inline-block align-top"
               />&nbsp;
-            Weather App
+             Weather App
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
