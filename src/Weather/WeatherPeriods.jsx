@@ -22,7 +22,7 @@ function WeatherPeriods({
         <Data {...currentWeather} />
       </Tab>
 
-      <Tab eventKey="forcast" title="Forecast">
+      <Tab eventKey="forecast" title="Forecast">
         <ForecastSelect {...forecastWeather}  setForecastDateTimeSelect = {setForecastDateTimeSelect}/>
         <Data {...forecastDateTimeSelect} {...forecastWeather?.city}/>
       </Tab>
