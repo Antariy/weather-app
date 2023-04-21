@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import Logo from '../Header/weather.png'
+// import Logo from '../Header/weather.png'
 
 function Header () {
     return (
@@ -11,7 +11,7 @@ function Header () {
         <Navbar.Brand href="#home">
         <img
               alt=""
-              src={Logo}
+              src="/logo.png"
               width="50"
               height="50"
               className="d-inline-block align-top"

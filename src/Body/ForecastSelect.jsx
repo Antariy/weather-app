@@ -6,7 +6,7 @@ function ForecastSelect({ list, setForecastDateTimeSelect }) {
  
 
 useEffect(() => {
-  setForecastDateTimeSelect(list?.[0]);
+  list?.length &&  setForecastDateTimeSelect(list?.[0]);
 }, [list, setForecastDateTimeSelect]);
 
   const handleChange = (event) => {
