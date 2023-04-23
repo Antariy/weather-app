@@ -19,7 +19,7 @@ useEffect(() => {
   return (
     <>
     <Form.Group className="mb-3">
-      <Form.Label>Date &ime</Form.Label>
+      <Form.Label>Date & Time</Form.Label>
       <Form.Select onChange={handleChange}>
         {list?.map(({ dt_txt }, index) => (
           <option value={index} key={index}>
