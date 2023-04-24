@@ -5,40 +5,22 @@ import Button from "react-bootstrap/Button";
 import WeatherPeriods from "./WeatherPeriods";
 import SideBar from "./SideBar";
 import "./Body.scss";
-// import { getCurrentWeather, getForcastWeather } from "../services/apiService";
-// import ErrorModal from "../ErrorModal";
 import Map from "./Map";
 import { useLocation } from "react-router-dom";
 
-function Weather({ currentWeather, forecastWeather }) {
+function Weather({ currentWeather, forecastWeather, setCurrentWeather, setForecastWeather }) {
 
   const location = useLocation();
 
   const defaultTab = location.pathname.includes("forecast") ? "forecast" : "current";
 
   const [showSideBar, setShowSideBar] = useState(false);
-  // const [currentWeather, setCurrentWeather] = useState(null);
-  // const [forecastWeather, setForecastWeather] = useState(null);
-  // const [errorMessage, setErrorMessage] = useState(null);
   const [selectedTab, setSelectedTab] = useState(defaultTab);
   const [forecastDateTimeSelect, setForecastDateTimeSelect] = useState(null);
 
   const handleShow = () => setShowSideBar(true);
 
-  // useEffect(() => {
-  //   getCurrentWeather()
-  //     .then((weather) => {
-  //       setCurrentWeather(weather);
-  //     })
-  //     .catch((errorMessage) => setErrorMessage(errorMessage));
-  //   getForcastWeather()
-  //     .then((forecast) => {
-  //       setForecastWeather(forecast);
-  //      
-  //     })
-  //     .catch((errorMessage) => setErrorMessage(errorMessage));
-  // }, []);
-
+  
   const mapProps =
     selectedTab === defaultTab
       ? currentWeather
@@ -73,14 +55,10 @@ function Weather({ currentWeather, forecastWeather }) {
       <SideBar
         show={showSideBar}
         handleClose={() => setShowSideBar(false)}
-        setCurrentWeather={currentWeather}
-        setForecastWeather={forecastWeather}
+        setCurrentWeather={setCurrentWeather}
+        setForecastWeather={setForecastWeather}
       />
-      {/* <ErrorModal
-        handleClose={() => setErrorMessage(null)}
-        message={errorMessage}
-      /> */}
-    </>
+      </>
   );
 }
 

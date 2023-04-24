@@ -30,15 +30,21 @@ function App() {
       .catch((errorMessage) => setErrorMessage(errorMessage));
   }, []);
 
- 
+ const weatherProps = {
+  currentWeather,
+  forecastWeather,
+  setCurrentWeather,
+  setForecastWeather
+ }
+
   return (
     <Container >
       <Header />
       <Routes>
-        <Route path='/' element={<Weather currentWeather = {currentWeather} forecastWeather={forecastWeather}/>} />
-        <Route path='/forecast/:listIndex' element={<Weather currentWeather = {currentWeather} forecastWeather={forecastWeather} />} />
-        <Route path='/forecast' element={<Weather currentWeather = {currentWeather} forecastWeather={forecastWeather}/>} />
-        <Route path='/contact' element={<Contact />} />
+        <Route path='/' element={<Weather {...weatherProps}/>} />
+        <Route path='/forecast/:listIndex' element={<Weather {...weatherProps}/>} />
+        <Route path='/forecast' element={<Weather {...weatherProps}/>} />
+        <Route path='/contact' element={<Contact {...weatherProps}/>} />
       </Routes>
       <Footer />
       <ErrorModal
