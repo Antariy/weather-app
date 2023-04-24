@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 
 
 function ForecastSelect({ list, setForecastDateTimeSelect }) {
-  const { listIndex } = useParams();
- 
+  const { listIndex } = useParams(); 
 
 useEffect(() => {
   list?.length &&  setForecastDateTimeSelect(list?.[listIndex || 0]);
@@ -20,7 +19,7 @@ useEffect(() => {
     <>
     <Form.Group className="mb-3">
       <Form.Label>Date & Time</Form.Label>
-      <Form.Select onChange={handleChange}>
+      <Form.Select onChange={handleChange} value = {listIndex}>
         {list?.map(({ dt_txt }, index) => (
           <option value={index} key={index}>
             {dt_txt}

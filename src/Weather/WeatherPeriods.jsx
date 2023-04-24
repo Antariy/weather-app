@@ -6,14 +6,14 @@ import ForecastSelect from "./ForecastSelect";
 function WeatherPeriods({
   currentWeather,
   forecastWeather,
-  defaultTab,
+  selectedTab,
   setSelectedTab,
   setForecastDateTimeSelect,
   forecastDateTimeSelect,
 }) {
   return (
     <Tabs
-      defaultActiveKey={defaultTab}
+      defaultActiveKey={selectedTab}
       className="mb-3"
       justify
       onSelect={(eventKey) => setSelectedTab(eventKey)}

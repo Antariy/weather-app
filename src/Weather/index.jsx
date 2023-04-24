@@ -12,15 +12,15 @@ function Weather({ currentWeather, forecastWeather, setCurrentWeather, setForeca
 
   const location = useLocation();
 
-  const defaultTab = location.pathname.includes("forecast") ? "forecast" : "current";
+  const defaultTab = "current";
 
   const [showSideBar, setShowSideBar] = useState(false);
-  const [selectedTab, setSelectedTab] = useState(defaultTab);
+  const [selectedTab, setSelectedTab] = useState(location.pathname.includes("forecast") ? "forecast" : "current");
   const [forecastDateTimeSelect, setForecastDateTimeSelect] = useState(null);
 
   const handleShow = () => setShowSideBar(true);
 
-  
+
   const mapProps =
     selectedTab === defaultTab
       ? currentWeather
@@ -43,7 +43,7 @@ function Weather({ currentWeather, forecastWeather, setCurrentWeather, setForeca
             currentWeather={currentWeather}
             forecastWeather={forecastWeather}
             setSelectedTab={setSelectedTab}
-            defaultTab={defaultTab}
+            selectedTab={selectedTab}
             setForecastDateTimeSelect={setForecastDateTimeSelect}
             forecastDateTimeSelect={forecastDateTimeSelect}
           />
@@ -58,7 +58,7 @@ function Weather({ currentWeather, forecastWeather, setCurrentWeather, setForeca
         setCurrentWeather={setCurrentWeather}
         setForecastWeather={setForecastWeather}
       />
-      </>
+    </>
   );
 }
 

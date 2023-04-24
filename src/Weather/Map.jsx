@@ -14,7 +14,7 @@ function Map({ coord, main, weather }) {
   })
 
 
-  return isLoaded && coord ? (
+  return isLoaded && coord && weather ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={{
