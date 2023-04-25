@@ -1,19 +1,16 @@
+import { Row, Col } from "react-bootstrap";
+
 function Footer() {
     return (
+        <Row>
+        <Col md={12}>
         <div className="footer">
-            <p className="footerText">@ 2023 Weather App</p>
+            <p>@ 2023 Weather App</p>
         </div>
+        </Col>
+        </Row>
     )
 }
 
 export default Footer;
 
-// function Footer() {
-//     return (
-//         <div className="footer">
-//             <p className="footerText">@ 2023 Weather App</p>
-//         </div>
-//     )
-// }
-
-// export default Footer;
