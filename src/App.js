@@ -39,7 +39,7 @@ function App() {
 
   return (
     <Container >
-      <Header />
+      <Header {...forecastWeather} />
       <Routes>
         <Route path='/' element={<Weather {...weatherProps}/>} />
         <Route path='/forecast/:listIndex' element={<Weather {...weatherProps}/>} />
