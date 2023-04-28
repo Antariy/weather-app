@@ -4,17 +4,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import moment from "moment/moment";
-import { useState } from 'react';
+
 
 
 function Header({ list }) {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-
-  };
-  
   return (
     <Navbar bg="primary" variant="dark" expand="sm">
       <Container>
@@ -34,23 +27,15 @@ function Header({ list }) {
             <Link to="/contact" className="nav-link">
               Contact{' '}
             </Link>
-            <NavDropdown 
+            <NavDropdown
               title="Dropdown"
               id="basic-nav-dropdown"
-              show={dropdownOpen}
-              onClick={toggleDropdown}
-            >
-              {list?.map(({ dt }, index) => {
-                return (
-                  <Link
-                    to={`/forecast/${index}`}
-                    className="dropdown-item"
-                    key={index}
-                  >
-                    {moment.unix(dt).format('DD.MM.HH:mm')}
-                  </Link>
-                );
-              })}
+              >
+              {list?.map(({ dt }, index) => (
+                <Link to={`/forecast/${index}`} className="dropwdown-item" key={index} data-rr-ua-dropdowm-item> 
+                  {moment.unix(dt).format('DD.MM.HH:mm')}
+                </Link>
+               ))};
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
