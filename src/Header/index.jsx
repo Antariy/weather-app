@@ -32,7 +32,7 @@ function Header({ list }) {
               id="basic-nav-dropdown"
               >
               {list?.map(({ dt }, index) => (
-                <Link to={`/forecast/${index}`} className="dropwdown-item" key={index} data-rr-ua-dropdowm-item> 
+                <Link to={`/forecast/${index}`} className="dropdown-item" key={index} > 
                   {moment.unix(dt).format('DD.MM.HH:mm')}
                 </Link>
                ))};

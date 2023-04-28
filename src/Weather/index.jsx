@@ -7,28 +7,19 @@ import SideBar from "./SideBar";
 import "./Body.scss";
 import Map from "./Map";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setShowSideBar } from "../services/stateService";
 
 function Weather({ currentWeather, forecastWeather, setCurrentWeather, setForecastWeather }) {
 
   const location = useLocation();
-
+  const dispatch = useDispatch();
   const defaultTab = "current";
-
-  const [showSideBar, setShowSideBar] = useState(false);
   const [selectedTab, setSelectedTab] = useState(location.pathname.includes("forecast") ? "forecast" : "current");
-  const [forecastDateTimeSelect, setForecastDateTimeSelect] = useState(null);
-
-  const handleShow = () => setShowSideBar(true);
 
 
-  const mapProps =
-    selectedTab === defaultTab
-      ? currentWeather
-      : {
-        main: forecastDateTimeSelect?.main || forecastWeather?.list[0].main,
-        coord: forecastWeather?.city.coord,
-        weather: forecastDateTimeSelect?.weather
-      };
+  const handleShow = () => dispatch(setShowSideBar(true));
+
 
   return (
     <>
@@ -44,17 +35,15 @@ function Weather({ currentWeather, forecastWeather, setCurrentWeather, setForeca
             forecastWeather={forecastWeather}
             setSelectedTab={setSelectedTab}
             selectedTab={selectedTab}
-            setForecastDateTimeSelect={setForecastDateTimeSelect}
-            forecastDateTimeSelect={forecastDateTimeSelect}
           />
         </Col>
         <Col md={8}>
-          <Map {...mapProps} />
+          <Map selectedTab={selectedTab} defaultTab={defaultTab}
+            currentWeather={currentWeather} forecastWeather={forecastWeather} />
         </Col>
       </Row>
       <SideBar
-        show={showSideBar}
-        handleClose={() => setShowSideBar(false)}
+        handleClose={() => dispatch(setShowSideBar(false))}
         setCurrentWeather={setCurrentWeather}
         setForecastWeather={setForecastWeather}
       />

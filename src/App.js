@@ -18,33 +18,33 @@ function App() {
 
 
   useEffect(() => {
-    getCurrentWeather()
-      .then((weather) => {
+    (async () => {
+      try {
+        const weather = await getCurrentWeather();
+        const forecast = await getForcastWeather();
         setCurrentWeather(weather);
-      })
-      .catch((errorMessage) => setErrorMessage(errorMessage));
-    getForcastWeather()
-      .then((forecast) => {
         setForecastWeather(forecast);
-      })
-      .catch((errorMessage) => setErrorMessage(errorMessage));
+      } catch (errorMessage) {
+        setErrorMessage(errorMessage);
+      }
+    })();
   }, []);
 
- const weatherProps = {
-  currentWeather,
-  forecastWeather,
-  setCurrentWeather,
-  setForecastWeather
- }
+  const weatherProps = {
+    currentWeather,
+    forecastWeather,
+    setCurrentWeather,
+    setForecastWeather
+  }
 
   return (
     <Container >
       <Header {...forecastWeather} />
       <Routes>
-        <Route path='/' element={<Weather {...weatherProps}/>} />
-        <Route path='/forecast/:listIndex' element={<Weather {...weatherProps}/>} />
-        <Route path='/forecast' element={<Weather {...weatherProps}/>} />
-        <Route path='/contact' element={<Contact {...weatherProps}/>} />
+        <Route path='/' element={<Weather {...weatherProps} />} />
+        <Route path='/forecast/:listIndex' element={<Weather {...weatherProps} />} />
+        <Route path='/forecast' element={<Weather {...weatherProps} />} />
+        <Route path='/contact' element={<Contact {...weatherProps} />} />
       </Routes>
       <Footer />
       <ErrorModal
