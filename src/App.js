@@ -8,11 +8,13 @@ import Contact from './Contact';
 import { useEffect, useState } from 'react';
 import { getCurrentWeather, getForcastWeather } from '../src/services/apiService';
 import ErrorModal from '../src/ErrorModal';
+import { setCurrentWeather } from "../src/services/stateService"
+import { useDispatch } from 'react-redux';
 
 
 function App() {
 
-  const [currentWeather, setCurrentWeather] = useState(null);
+  const dispatch = useDispatch();
   const [forecastWeather, setForecastWeather] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -22,16 +24,15 @@ function App() {
       try {
         const weather = await getCurrentWeather();
         const forecast = await getForcastWeather();
-        setCurrentWeather(weather);
+        dispatch(setCurrentWeather(weather));
         setForecastWeather(forecast);
       } catch (errorMessage) {
         setErrorMessage(errorMessage);
       }
     })();
-  }, []);
+  }, [dispatch]);
 
   const weatherProps = {
-    currentWeather,
     forecastWeather,
     setCurrentWeather,
     setForecastWeather
