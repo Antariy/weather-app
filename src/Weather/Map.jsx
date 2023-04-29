@@ -1,8 +1,7 @@
 import React from 'react';
 import { GoogleMap, useJsApiLoader, InfoWindow } from '@react-google-maps/api';
 import { useSelector } from 'react-redux';
-import { setCurrentWeather } from "../services/stateService";
-import { useDispatch } from 'react-redux';
+
 
 const containerStyle = {
   width: '100%',
@@ -12,12 +11,11 @@ const containerStyle = {
 
 function Map({ selectedTab, defaultTab, forecastWeather }) {
 
-  const dispatch = useDispatch()
   const forecastDateTimeSelect = useSelector((state) => state.forecastDateTimeSelect)
-
+  const сurrentWeather = useSelector((state) => state.сurrentWeather)
   const mapProps =
   selectedTab === defaultTab
-    ? dispatch(setCurrentWeather)
+    ? сurrentWeather
     : {
       main: forecastDateTimeSelect?.main || forecastWeather?.list[0].main,
       coord: forecastWeather?.city.coord,

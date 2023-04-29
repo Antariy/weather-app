@@ -2,15 +2,15 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Data from "./Data";
 import ForecastSelect from "./ForecastSelect";
-import { useDispatch } from 'react-redux';
-import { setCurrentWeather } from "../services/stateService";
+import { useSelector } from "react-redux";
+
 
 function WeatherPeriods({
   forecastWeather,
   selectedTab,
   setSelectedTab,
 }) {
-  const dispatch = useDispatch();
+  const сurrentWeather = useSelector((state) => state.сurrentWeather)
 
   return (
     <Tabs
@@ -20,7 +20,7 @@ function WeatherPeriods({
       onSelect={(eventKey) => setSelectedTab(eventKey)}
     >
       <Tab eventKey="current" title="Current weather">
-        <Data {...dispatch(setCurrentWeather)} selectedTab={selectedTab} />
+        <Data currentWeather = {сurrentWeather} selectedTab={selectedTab} />
       </Tab>
 
       <Tab eventKey="forecast" title="Forecast">
