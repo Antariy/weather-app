@@ -9,14 +9,16 @@ import Map from "./Map";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setShowSideBar } from "../services/stateService";
+import { useSelector } from "react-redux";
+import { setCurrentWeather } from "../services/stateService"
 
-function Weather({ currentWeather, forecastWeather, setCurrentWeather, setForecastWeather }) {
+function Weather({ forecastWeather, setForecastWeather }) {
 
   const location = useLocation();
   const dispatch = useDispatch();
   const defaultTab = "current";
   const [selectedTab, setSelectedTab] = useState(location.pathname.includes("forecast") ? "forecast" : "current");
-
+  const currentWeather = useSelector((state) => state.currentWeather)
 
   const handleShow = () => dispatch(setShowSideBar(true));
 
@@ -44,7 +46,7 @@ function Weather({ currentWeather, forecastWeather, setCurrentWeather, setForeca
       </Row>
       <SideBar
         handleClose={() => dispatch(setShowSideBar(false))}
-        setCurrentWeather={setCurrentWeather}
+        setCurrentWeather= {dispatch(setCurrentWeather)}
         setForecastWeather={setForecastWeather}
       />
     </>

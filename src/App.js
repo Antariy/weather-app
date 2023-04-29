@@ -18,7 +18,7 @@ function App() {
   const dispatch = useDispatch();
   const [forecastWeather, setForecastWeather] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-  const сurrentWeather = useSelector((state) => state.сurrentWeather);
+  const currentWeather = useSelector((state) => state.currentWeather);
 
   useEffect(() => {
     (async () => {
@@ -34,7 +34,7 @@ function App() {
   }, [dispatch]);
 
   const weatherProps = {
-    сurrentWeather,
+    currentWeather,
     forecastWeather,
     setCurrentWeather,
     setForecastWeather

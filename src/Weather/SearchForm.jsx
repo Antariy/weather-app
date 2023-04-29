@@ -8,16 +8,18 @@ import {
   defaultParams,
   getForcastWeather,
 } from "../services/apiService";
+import { setCurrentWeather } from "../services/stateService";
+import { useDispatch } from "react-redux";
+
 
 function SearchForm({
-  setCurrentWeather,
   setForecastWeather,
   closeSideBar,
   selectedData,
   setSelectedData,
 }) {
   const [selectedCityIndex, setSelectedCityIndex] = useState(0);
-
+  const dispatch = useDispatch();
   const cities = [
     {
       name: "Tallinn",
@@ -77,8 +79,9 @@ function SearchForm({
 
     const currentWeather = await getCurrentWeather(params);
     const forecastWeather = await getForcastWeather(params);
+  
 
-    setCurrentWeather(currentWeather);
+    dispatch(setCurrentWeather(currentWeather));
     setForecastWeather(forecastWeather);
 
     closeSideBar();

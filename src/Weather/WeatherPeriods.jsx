@@ -10,7 +10,7 @@ function WeatherPeriods({
   selectedTab,
   setSelectedTab,
 }) {
-  const сurrentWeather = useSelector((state) => state.сurrentWeather)
+  const currentWeather = useSelector((state) => state.currentWeather)
 
   return (
     <Tabs
@@ -20,7 +20,7 @@ function WeatherPeriods({
       onSelect={(eventKey) => setSelectedTab(eventKey)}
     >
       <Tab eventKey="current" title="Current weather">
-        <Data currentWeather = {сurrentWeather} selectedTab={selectedTab} />
+        <Data {...currentWeather} selectedTab={selectedTab} />
       </Tab>
 
       <Tab eventKey="forecast" title="Forecast">
