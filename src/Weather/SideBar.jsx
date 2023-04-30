@@ -3,11 +3,9 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import SearchForm from "./SearchForm";
 import ExportForm from "./ExportForm";
 import { useSelector } from "react-redux";
-import { setCurrentWeather, setForecastWeather } from "../services/stateService";
-import { useDispatch } from 'react-redux';
 
 function SideBar({ handleClose }) {
-  const dispatch = useDispatch();
+
   const show = useSelector((state) => state.showSideBar);
   const [selectedData, setSelectedData] = useState(null);
   return (
@@ -17,8 +15,6 @@ function SideBar({ handleClose }) {
       </Offcanvas.Header>
       <Offcanvas.Body>
         <SearchForm
-          setCurrentWeather={dispatch(setCurrentWeather)}
-          setForecastWeather={dispatch(setForecastWeather)}
           closeSideBar={handleClose}
           selectedData={selectedData}
           setSelectedData={setSelectedData}

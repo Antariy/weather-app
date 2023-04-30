@@ -78,7 +78,6 @@ function SearchForm({
 
     const currentWeather = await getCurrentWeather(params);
     const forecastWeather = await getForcastWeather(params);
-  
 
     dispatch(setCurrentWeather(currentWeather));
     dispatch(setForecastWeather(forecastWeather));
