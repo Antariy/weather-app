@@ -8,7 +8,7 @@ import Contact from './Contact';
 import { useEffect, useState } from 'react';
 import { getCurrentWeather, getForcastWeather } from '../src/services/apiService';
 import ErrorModal from '../src/ErrorModal';
-import { setCurrentWeather } from "../src/services/stateService"
+import { setCurrentWeather, setForecastWeather } from "../src/services/stateService";
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
@@ -16,9 +16,10 @@ import { useSelector } from 'react-redux';
 function App() {
 
   const dispatch = useDispatch();
-  const [forecastWeather, setForecastWeather] = useState(null);
+
   const [errorMessage, setErrorMessage] = useState(null);
   const currentWeather = useSelector((state) => state.currentWeather);
+  const forecastWeather = useSelector((state) => state.forecastWeather);
 
   useEffect(() => {
     (async () => {
@@ -26,7 +27,7 @@ function App() {
         const weather = await getCurrentWeather();
         const forecast = await getForcastWeather();
         dispatch(setCurrentWeather(weather));
-        setForecastWeather(forecast);
+        dispatch(setForecastWeather(forecast));
       } catch (errorMessage) {
         setErrorMessage(errorMessage);
       }

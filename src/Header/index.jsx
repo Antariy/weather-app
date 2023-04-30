@@ -30,12 +30,12 @@ function Header({ list }) {
             <NavDropdown
               title="Dropdown"
               id="basic-nav-dropdown"
-              >
+            >
               {list?.map(({ dt }, index) => (
-                <Link to={`/forecast/${index}`} className="dropdown-item" key={index} > 
+                <Link to={`/forecast/${index}`} className="dropdown-item" key={index} >
                   {moment.unix(dt).format('DD.MM.HH:mm')}
                 </Link>
-               ))};
+              ))};
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

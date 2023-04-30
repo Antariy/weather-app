@@ -8,12 +8,11 @@ import {
   defaultParams,
   getForcastWeather,
 } from "../services/apiService";
-import { setCurrentWeather } from "../services/stateService";
+import { setCurrentWeather, setForecastWeather } from "../services/stateService";
 import { useDispatch } from "react-redux";
 
 
 function SearchForm({
-  setForecastWeather,
   closeSideBar,
   selectedData,
   setSelectedData,
@@ -82,7 +81,7 @@ function SearchForm({
   
 
     dispatch(setCurrentWeather(currentWeather));
-    setForecastWeather(forecastWeather);
+    dispatch(setForecastWeather(forecastWeather));
 
     closeSideBar();
   };

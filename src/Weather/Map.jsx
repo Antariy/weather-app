@@ -9,10 +9,11 @@ const containerStyle = {
 };
 
 
-function Map({ selectedTab, defaultTab, forecastWeather }) {
+function Map({ selectedTab, defaultTab }) {
 
-  const forecastDateTimeSelect = useSelector((state) => state.forecastDateTimeSelect)
-  const currentWeather = useSelector((state) => state.currentWeather)
+  const forecastDateTimeSelect = useSelector((state) => state.forecastDateTimeSelect);
+  const currentWeather = useSelector((state) => state.currentWeather);
+  const forecastWeather = useSelector((state) => state.forecastWeather);
   const mapProps =
   selectedTab === defaultTab
     ? currentWeather

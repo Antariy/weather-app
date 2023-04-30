@@ -6,11 +6,11 @@ import { useSelector } from "react-redux";
 
 
 function WeatherPeriods({
-  forecastWeather,
   selectedTab,
   setSelectedTab,
 }) {
-  const currentWeather = useSelector((state) => state.currentWeather)
+  const currentWeather = useSelector((state) => state.currentWeather);
+  const forecastWeather = useSelector((state) => state.forecastWeather);
 
   return (
     <Tabs
