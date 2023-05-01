@@ -45,10 +45,10 @@ function App() {
     <Container >
       <Header {...forecastWeather} />
       <Routes>
-        <Route path='/' element={<Weather {...weatherProps} />} />
-        <Route path='/forecast/:listIndex' element={<Weather {...weatherProps} />} />
+        <Route path='/weather-app' element={<Weather {...weatherProps} />} />
+        <Route path='/weather-app/forecast/:listIndex' element={<Weather {...weatherProps} />} />
         <Route path='/forecast' element={<Weather {...weatherProps} />} />
-        <Route path='/contact' element={<Contact {...weatherProps} />} />
+        <Route path='/weather-app/contact' element={<Contact {...weatherProps} />} />
       </Routes>
       <Footer />
       <ErrorModal

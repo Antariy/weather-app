@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import WeatherPeriods from "./WeatherPeriods";
 import SideBar from "./SideBar";
-import "./Body.scss";
+import "./Weather.scss";
 import Map from "./Map";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -14,12 +14,12 @@ import { setShowSideBar } from "../services/stateService";
 function Weather() {
 
   const location = useLocation();
-  const dispatch = useDispatch();
   const defaultTab = "current";
   const [selectedTab, setSelectedTab] = useState(location.pathname.includes("forecast") ? "forecast" : "current");
 
+  const dispatch = useDispatch();
+  
   const handleShow = () => dispatch(setShowSideBar(true));
-
 
   return (
     <>

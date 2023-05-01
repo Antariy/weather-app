@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import moment from "moment/moment";
+import { FORECAST_DATE_FORMAT } from "../constants"
 
 
 
@@ -11,10 +12,10 @@ function Header({ list }) {
   return (
     <Navbar bg="primary" variant="dark" expand="sm">
       <Container>
-        <Link to="/" className='navbar-brand'>
+        <Link to="/weather-app" className='navbar-brand'>
           <img
             alt=""
-            src="/logo.png"
+            src="/weather-app//logo.png"
             width="50"
             height="50"
             className="d-inline-block align-center"
@@ -24,7 +25,7 @@ function Header({ list }) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Link to="/contact" className="nav-link">
+            <Link to="/weather-app/contact" className="nav-link">
               Contact{' '}
             </Link>
             <NavDropdown
@@ -32,8 +33,8 @@ function Header({ list }) {
               id="basic-nav-dropdown"
             >
               {list?.map(({ dt }, index) => (
-                <Link to={`/forecast/${index}`} className="dropdown-item" key={index} >
-                  {moment.unix(dt).format('DD.MM.HH:mm')}
+                <Link to={`/weather-app/forecast/${index}`} className="dropdown-item" key={index} >
+                  {moment.unix(dt).format(FORECAST_DATE_FORMAT)}
                 </Link>
               ))};
             </NavDropdown>
