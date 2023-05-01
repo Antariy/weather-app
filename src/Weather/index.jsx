@@ -12,10 +12,16 @@ import { setShowSideBar } from "../services/stateService";
 
 
 function Weather() {
+// useLocation это реакт роутер дом для определения урл в котором мы находимся.
+// при изменении урл useLocation если он остается на том же компоненте то он заставляет компонент отрисоваться.
 
   const location = useLocation();
   const defaultTab = "current";
   const [selectedTab, setSelectedTab] = useState(location.pathname.includes("forecast") ? "forecast" : "current");
+
+  // useDispatch - реакт хук может воздейстовать на наше состояние компонента, 
+  // передает функцию, которая общается с редуксом.
+  // диспатч тригерит редукс и принимает в себя тригер состояния тоесть экшн.
 
   const dispatch = useDispatch();
   
